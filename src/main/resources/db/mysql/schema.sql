@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS visits (
   FOREIGN KEY (pet_id) REFERENCES pets(id)
 ) engine=InnoDB;
 
-CREATE TABLE IF NOT EXISTS bills (
+CREATE TABLE IF NOT EXISTS facturas (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id_number INT(20),
   bill_date DATE,

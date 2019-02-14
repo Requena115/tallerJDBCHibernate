@@ -83,7 +83,19 @@ public class Owner extends Person {
 
 
 
-    public String getAddress() {
+    public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public void setPets(Set<Pet> pets) {
+		this.pets = pets;
+	}
+
+	public String getAddress() {
         return this.address;
     }
 
