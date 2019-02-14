@@ -13,7 +13,6 @@ public class BillDAO extends AbstractJpaDAO<Bill,Integer> implements IBillAO{
 
         setClazz(Bill.class);
     }
-
     
     public List<Bill> getBIllsByIdNumber(long idNumber) {
     	

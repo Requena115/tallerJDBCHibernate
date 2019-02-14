@@ -28,6 +28,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.samples.petclinic.bill.Bill;
 import org.springframework.samples.petclinic.persistence.dao.BillDAO;
 import org.springframework.samples.petclinic.persistence.dao.IBillAO;
+import org.springframework.samples.petclinic.persistence.dao.OwnerDAO;
+import org.springframework.samples.petclinic.persistence.dao.VisitDAO;
 
 /**
  * PetClinic Spring Boot Application.
@@ -41,6 +43,10 @@ public class DAOApplication implements CommandLineRunner {
 	
 	@Autowired
 	IBillAO billDAO;
+	@Autowired
+	OwnerDAO ownerDAO;
+	@Autowired
+	VisitDAO visitDAO;
 	
 
     public static void main(String[] args) throws Exception {
@@ -54,14 +60,12 @@ public class DAOApplication implements CommandLineRunner {
     @Transactional
     public void run(String... arg0) {
     	
-
 		Bill b = new Bill();
 		b.setIdNumber(954);
 		b.setMoney(4.0);
 		b.setPaymentDate(new Date());
 		
 		billDAO.create(b); 
-		
 		
 		Bill b2 = new Bill();
 		b2.setIdNumber(955);
@@ -88,19 +92,19 @@ public class DAOApplication implements CommandLineRunner {
 		List<Bill> bills  = billDAO.getBIllsByIdNumber(954); 
 		
 		for(Bill bill:bills) {
-			System.out.println("Consulta con Id 954 . Bill recuperada con ID  " + bill.getId() + " y money " + bill.getMoney() );
+			System.out.println("Id 954 . Factura recuperada con ID  " + bill.getId() + " con cuantía " + bill.getMoney() );
 		}
 		
 		
 		List<Bill> billsNamedQuery  = billDAO.getBIllsByIdNumberNamedQuery(954); 
 		for(Bill billNamed:billsNamedQuery) {
-			System.out.println("Consulta namedQuery con Id 954 . Bill recuperada con ID  " + billNamed.getId() + " y money " + billNamed.getMoney() );
+			System.out.println("Consulta namedQuery con Id 954 . Factura recuperada con ID  " + billNamed.getId() + " con cuantía " + billNamed.getMoney() );
 		}
 		
 		List<Bill> Allbills =  billDAO.findAll();
-		System.out.println("Bills totales recuperadas");
+		System.out.println("Facturas totales recuperadas");
 		for(Bill billAux:Allbills) {
-			System.out.println("Bill recuperada con PK " + billAux.getId() + " IdNumber "  + billAux.getIdNumber() +  " y money " + billAux.getMoney() );
+			System.out.println("Factura recuperada con clave " + billAux.getId() + " IdNumber "  + billAux.getIdNumber() +  " con cuantía " + billAux.getMoney() );
 		}
 
 
