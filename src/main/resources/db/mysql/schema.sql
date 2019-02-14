@@ -70,3 +70,12 @@ CREATE TABLE IF NOT EXISTS bills (
   visit_id INT(4) UNSIGNED NOT NULL,
   FOREIGN KEY (visit_id) REFERENCES visits(id)
 ) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS accounts (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  password VARCHAR(30),
+  username VARCHAR(30),
+  bill_date DATE,
+  owner_id INT(4) UNSIGNED NOT NULL,
+  FOREIGN KEY (owner_id) REFERENCES owners(id)
+) engine=InnoDB;
